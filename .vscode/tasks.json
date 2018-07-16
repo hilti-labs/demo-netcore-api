@@ -5,19 +5,22 @@
     "tasks": [
         {
             "label": "build",
-            "command": "dotnet build",
+            "command": "dotnet build src",
             "type": "shell",
             "group": "build",
             "presentation": {
                 "reveal": "silent"
             },
-            "problemMatcher": "$msCompile",
+            "problemMatcher": "$msCompile"
         },
         {
             "label": "run",
-            "command": "dotnet run",
+            "command": " dotnet run --project ./src",
             "type": "shell",
-            "group": "none"
+            "presentation": {
+                "reveal": "always"
+            },
+            "problemMatcher": "$msCompile"
         }
     ]
 }
