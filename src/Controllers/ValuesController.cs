@@ -10,7 +10,7 @@ namespace demo_netcore_2x_api.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result = new [] { "value1", "value2" };
+            var result = new [] { "value1", "value2", "value3" };
             return Ok(result);
         }
 
