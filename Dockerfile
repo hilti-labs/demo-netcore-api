@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1-sdk-alpine AS build
+FROM microsoft/dotnet:2.1.402-sdk-nanoserver-1803 AS build
 
 # Set working directory within container
 WORKDIR /app
@@ -13,7 +13,7 @@ RUN dotnet restore
 RUN dotnet publish -c Release -o dist
 
 # Build runtime image
-FROM microsoft/dotnet:2.1-aspnetcore-runtime-alpine AS runtime
+FROM microsoft/dotnet:2.1.4-aspnetcore-runtime-nanoserver-1803 AS runtime
 COPY --from=build /app/dist .
 ENTRYPOINT ["dotnet", "demo-netcore-api.dll"]
 
@@ -21,7 +21,7 @@ ENTRYPOINT ["dotnet", "demo-netcore-api.dll"]
 # docker build . -t architecture/demo-netcore-api
 
 ## Run the app
-# docker run -it --rm -p 8000:80 --name demo-netcore-api demo-netcore-api
+# docker run -it --rm -p 8000:80 --name demo-netcore-api architecture/demo-netcore-api
 
 ## Browse the app
 # Navigate to http://localhost:8000/api/values
