@@ -1,4 +1,4 @@
-FROM microsoft/dotnet:2.1.402-sdk-nanoserver-1803 AS build
+FROM microsoft/dotnet:2.1.403-sdk-nanoserver-sac2016 AS build
 
 # Set working directory within container
 WORKDIR /app
@@ -13,7 +13,7 @@ RUN dotnet restore
 RUN dotnet publish -c Release -o dist
 
 # Build runtime image
-FROM microsoft/dotnet:2.1.4-aspnetcore-runtime-nanoserver-1803 AS runtime
+FROM microsoft/dotnet:2.1.5-aspnetcore-runtime-nanoserver-sac2016 AS runtime
 COPY --from=build /app/dist .
 ENTRYPOINT ["dotnet", "demo-netcore-api.dll"]
 
